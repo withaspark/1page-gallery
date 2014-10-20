@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# apt-get install imagemagick
+
+mkdir -p images
+mkdir -p thumbs
+
+# Unzip zip of all images
+unzip *.zip -d images/
+
+cd images
+
+# Resize images
+for file in *.{JPG,jpg,JPEG,jpeg}; do
+   convert -resize 700 "$file" tmp_"$file"
+   rm "$file"
+   mv tmp_"$file" "$file"
+done
+
+# Make thumbnails
+for file in *.{JPG,jpg,JPEG,jpeg}; do
+   convert -resize 80 "$file" ../thumbs/"$file"
+done
+
