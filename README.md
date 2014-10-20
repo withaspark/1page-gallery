@@ -45,4 +45,7 @@ $siteName = '1Page Gallery';
 
 // Duration to display each slide in milliseconds
 $slideTime = 5000;
+
+// Your Google Analytics ID
+$googleAnalytics = '';
 ```
