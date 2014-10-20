@@ -375,6 +375,7 @@ if ($googleAnalytics != '') {
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', '<?php echo $googleAnalytics; ?>', 'auto');
+  ga('require', 'displayfeatures');
   ga('send', 'pageview');
 </script>
 <?php
