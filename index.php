@@ -80,8 +80,8 @@ if ($handle = opendir($dir)) {
 		) {
 			// If thumbnail exists, add
 			if (file_exists($thumbDir.$image)) {
-				$images[] = $dir . $image;
-				$thumbs[] = $thumbDir . $image;
+				$images[] = str_replace(' ','%20', $dir . $image);
+				$thumbs[] = str_replace(' ','%20', $thumbDir . $image);
 			}
 		}
 	}
@@ -143,11 +143,15 @@ if ($handle = opendir($dir)) {
 		position: relative;
 		width: 100%;
 		max-height: 450px;
+		object-fit: contain;
+		text-align: center;
+		overflow: hidden;
 	}
 	#stage img {
-		width: 100%;
-		height: auto;
-		max-height: 450px;
+		max-height: 120%;
+		min-height: 100%;
+		width: auto;
+		max-width: 100%;
 	}
 	#stage .control {
 		position: absolute;
@@ -177,9 +181,9 @@ if ($handle = opendir($dir)) {
 	.control a {
 		position: absolute;
 		top: 50%;
+		left: 0px;
 		width: 100%;
 		margin-top: -50%;
-		margin-left: -50%;
 		text-decoration: none;
 		vertical-align: middle;
 	}
@@ -224,7 +228,7 @@ if ($handle = opendir($dir)) {
 
 		<div id='slideshow'>
 			<div id='stage'>
-				<img id='centerStage' src='#' alt='Gallery Image'>
+				<img id='centerStage' src='.jpg' alt='Gallery Image'>
 				<div class='control previous'><a class='previous' href='#'>&lt;</a></div>
 				<div class='control next'><a class='next' href='#'>&gt;</a> </div>
 				<div class='clear'> </div>
@@ -242,16 +246,15 @@ foreach ($thumbs as $thumb) {
 		</div>
 
 <?php
-			if ($zip != "") {
-				echo "		<div id='nav'><a href='$zip'>Download All Images</a></div>";
-			}
+if ($zip != "") {
+	echo "		<div id='nav'><a href='$zip'>Download All Images</a></div>";
+}
 ?>
-		<div class='clear'> </div>
 
 	</div>
 
 	<div id='footer'>
-		A <a href='https://github.com/withaspark/1page-gallery'>1Page Gallery</a> by <a href='http://withaspark.com'>Stephen Parker</a>.
+		A <a href='http://withaspark.com/1page/'>1Page Gallery</a> by <a href='http://withaspark.com'>Stephen Parker</a>.<br>Available on <a href='https://github.com/withaspark/1page-gallery'>GitHub</a>.
 	</div>
 
 
@@ -267,19 +270,30 @@ foreach ($images as $image)
 ?>
 	];
 
-	// Load the first image
-	ChangeTo(0);
+	$(document).ready(function() {
+		// Load the first image
+		ChangeTo(0);
 
-	// Poll every second to display new image
-	setInterval(function() {
-		if (autoPlay) {
-			timer = timer + 1000;
-			if (timer > <?php echo $slideTime; ?>) {
-				timer = 0;
-				NextImage();
+		// Scale stage based on size of screen
+		setTimeout(function() {
+			var height = 0.75 * $('#stage').width();
+			var maxHeight = 0.6 * $(window).height();
+			if (height > maxHeight)
+				height = maxHeight;
+			$('#stage').height(height);
+		}, 100);
+
+		// Poll every second to display new image
+		setInterval(function() {
+			if (autoPlay) {
+				timer = timer + 1000;
+				if (timer > <?php echo $slideTime; ?>) {
+					timer = 0;
+						NextImage();
+				}
 			}
-		}
-	}, 1000);
+		}, 1000);
+	});
 
 	// Clicking the main image will advance to the next image
 	$('#centerStage').click(function() {
@@ -376,6 +390,7 @@ if ($googleAnalytics != '') {
 
   ga('create', '<?php echo $googleAnalytics; ?>', 'auto');
   ga('require', 'displayfeatures');
+  ga('require', 'linkid', 'linkid.js');
   ga('send', 'pageview');
 </script>
 <?php
