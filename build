@@ -1,24 +1,49 @@
 #!/bin/bash
 
 # apt-get install imagemagick
+echo 
+echo 
+echo "1Page Gallery build script by Stephen Parker"
+echo "Released under the MIT license. See LICENSE."
+echo 
 
+# Make sure zip exists, if not exit now
+echo "Searching for high resolution image zip file..."
+FOUND=`find . -name *.zip | wc -l`
+if [ $FOUND -lt 1 ]; then
+	echo 
+	echo "Error: Please upload a zip file containing your high resolution images to this directory and retry."
+	echo 
+	exit 1;
+fi
+
+# Make necessary directories
+echo "Creating full scale image directory..."
 mkdir -p images
+echo "Creating thumbnail image directory..."
 mkdir -p thumbs
 
 # Unzip zip of all images
+echo "Unzipping images..."
 unzip *.zip -d images/
 
 cd images
 
 # Resize images
+echo "Resizing full scale images for the web..."
 for file in *.{JPG,jpg,JPEG,jpeg}; do
-   convert -resize 700 "$file" tmp_"$file"
-   rm "$file"
-   mv tmp_"$file" "$file"
+   if [[ -f "$file" ]]; then
+      convert -resize 700 "$file" tmp_"$file"
+      rm "$file"
+      mv tmp_"$file" "$file"
+   fi
 done
 
 # Make thumbnails
+echo "Creating thumbnail images..."
 for file in *.{JPG,jpg,JPEG,jpeg}; do
-   convert -resize 80 "$file" ../thumbs/"$file"
+   if [[ -f "$file" ]]; then
+      convert -resize 80 "$file" ../thumbs/"$file"
+   fi
 done
 

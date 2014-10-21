@@ -87,6 +87,28 @@ if ($handle = opendir($dir)) {
 	}
 	closedir($handle);
 }
+
+// If no images, complain and exit
+if (sizeof($images) < 1) {
+        echo "
+<!doctype html>
+<html lang='en'>
+        <head>
+                <meta charset='utf-8'>
+                <title>Error: 1Page Gallery</title>
+        </head>
+        <body>
+                <h1>Error: 1Page Gallery</h1>
+                <p>No images found! You must create 2 directories containing images:</p>
+                <p><code>images</code> should contain your high resolution images</p>
+                <p><code>thumbs</code> should contain thumbnails named identical to your high resolution images</p>
+                <p>Optionally, you can upload a zip file to the same directory as this file and from a terminal type</p>
+                <pre>./build</pre>
+                <p>to generate correctly sized images for both in the correct location</p>
+        </body>
+</html>";
+	exit;
+}
 ?>
 <!doctype html>
 <html lang='en'>
