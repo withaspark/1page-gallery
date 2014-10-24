@@ -389,7 +389,12 @@ foreach ($images as $image)
 		}, fadeDuration);
 		$('.changer').removeClass('currentThumb');
 		$('#changeTo' + index).addClass('currentThumb');
-		$('#selector').scrollLeft($('.changer').outerWidth() * index);
+
+		// Move thumbnail scroll bar as advance through thumbnails
+		var leftness = 0;
+		for (i = 0; i < index; i++)
+			leftness += $('#changeTo' + i).outerWidth();
+		$('#selector').scrollLeft(leftness - ($('#selector').outerWidth() / 2));
 	}
 
 	// Function to preload images
