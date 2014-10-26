@@ -109,6 +109,10 @@ if (sizeof($images) < 1) {
 </html>";
 	exit;
 }
+else {
+	natcasesort($images);
+	natcasesort($thumbs);
+}
 ?>
 <!doctype html>
 <html lang='en'>
