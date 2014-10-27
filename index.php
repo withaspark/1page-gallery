@@ -32,14 +32,17 @@ SOFTWARE.
 // Heading to title page
 $siteName = '1Page Gallery';
 
-// Duration to display each slide in milliseconds
-$slideTime = 5000;
+// Link logo/header takes user to
+$logoLinkUrl = '/';
 
 // Your logo; leave blank if wish not to use one
 $logo = '';
 
 // Your Google Analytics ID
 $googleAnalytics = '';
+
+// Duration to display each slide in milliseconds
+$slideTime = 5000;
 
 // END OF CONFIGURATION
 
@@ -147,6 +150,9 @@ else {
 	a:hover {
 		text-decoration: none;
 	}
+	h1 a {
+		text-decoration: none;
+	}
 	.clear { clear: both; }
 	#page {
 		max-width: 700px;
@@ -244,12 +250,14 @@ else {
 
 	<div id='page'>
 		<h1>
+			<a href='<?php echo $logoLinkUrl; ?>'>
 <?php
 		if ($logo != '')
-			echo "			<img src='$logo' alt='$siteName'>";
+			echo "				<img src='$logo' alt='$siteName'>";
 		else
-			echo "			$siteName";
+			echo "				$siteName";
 ?>
+			</a>
 		</h1>
 
 		<div id='slideshow'>

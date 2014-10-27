@@ -45,12 +45,15 @@ sudo yum update && sudo yum install php5 imagemagick unzip
 // Heading to title page
 $siteName = '1Page Gallery';
 
-// Duration to display each slide in milliseconds
-$slideTime = 5000;
+// Link logo/header takes user to
+$logoLinkUrl = '/';
 
 // Your logo; leave blank if wish not to use one
 $logo = '';
 
 // Your Google Analytics ID
 $googleAnalytics = '';
+
+// Duration to display each slide in milliseconds
+$slideTime = 5000;
 ```
