@@ -142,6 +142,7 @@ else {
 	h1 img {
 		max-width: 33%;
 		min-width: 200px;
+		border: none;
 	}
 	a, a:hover, a:link, a:visited, a:active {
 		color: #ddd;
