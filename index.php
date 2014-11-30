@@ -125,7 +125,7 @@ else {
 	<title><?php echo $siteName; ?></title>
 
 	<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
-	<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 	<style type='text/css'>
 	body {
 		padding: 1em;
