@@ -289,7 +289,7 @@ if ($zip != "") {
 	</div>
 
 	<div id='footer'>
-		A <a href='http://withaspark.com/1page/'>1Page Gallery</a> by <a href='http://withaspark.com'>Stephen Parker</a>.<br>Available on <a href='https://github.com/withaspark/1page-gallery'>GitHub</a>.
+		A <a href='http://stephenparker.io/1page/'>1Page Gallery</a> by <a href='http://stephenparker.io'>Stephen Parker</a>.<br>Available on <a href='https://github.com/stephenparkerio/1page-gallery'>GitHub</a>.
 	</div>
 
 
