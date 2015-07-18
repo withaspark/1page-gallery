@@ -12,7 +12,7 @@ elegant jQuery, HTML5, CSS3, PHP photo gallery will be auto-magically generated.
 
 Free for all purposes, personal and commercial under the MIT license. See [LICENSE](LICENSE). Attribution in the footer is certainly appreciated, but not required; however, license text must remain intact.
 
-For a demo, see [withaspark.com/1page/](http://withaspark.com/1page/).
+For a demo, see [withaspark.com/projects/1page/](http://withaspark.com/projects/1page/).
 
 
 
